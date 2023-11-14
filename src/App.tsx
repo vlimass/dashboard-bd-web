@@ -1,6 +1,8 @@
+import { Overview } from "./components/Overview"
+
 function App() {
   return (
-    <p>hello, world</p>
+    <Overview />
   )
 }
 
