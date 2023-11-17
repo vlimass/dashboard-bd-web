@@ -1,4 +1,4 @@
-import { Card } from "../components/Card";
+import { PrimaryCard } from "../components/PrimaryCard";
 import { Header } from "../components/Header";
 
 // Imagens 
@@ -51,13 +51,13 @@ export function Overview() {
         {/* Cards */}
         <section className="flex gap-6">
           {cardInfo.map(card => 
-            <Card 
+            <PrimaryCard 
               key={card.title}
               title={card.title} 
               value={card.value.toFixed(2).toString().replace('.', ',')} 
               description={card.description} 
-              image={card.image}
-              imageAlt={card.imageAlt}
+              icon={card.image}
+              iconAlt={card.imageAlt}
             />
           )}
         </section>
