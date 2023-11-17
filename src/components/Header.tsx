@@ -1,23 +1,33 @@
+import { Link } from 'react-router-dom'
 import Profile from '../assets/profile.svg'
 
-export function Header() {
+interface HeaderProps {
+  onFocus: string;
+}
+
+export function Header({ onFocus } : HeaderProps) {
   return (
     <div className="flex justify-between items-center border-b-[1px] border-zinc-700 px-12">
       <div className="flex gap-8 py-3">
         <div>
-          <a href="#" className=" text-zinc-100 font-sans">Visão geral</a>
+          <Link to="/" className={onFocus === 'Overview' ?  'text-zinc-100' : 'text-muted-foreground hover:text-zinc-50 hover:transition-all' }>
+            Visão geral
+          </Link>
         </div>
+
         <div>
-          <a href="#" className=" text-muted-foreground font-sans hover:text-zinc-50 hover:transition-all">
+          <Link to="/customers" className={onFocus === 'Customers' ?  'text-zinc-100' : 'text-muted-foreground hover:text-zinc-50 hover:transition-all'}>
             Clientes
-          </a>
+          </Link>
         </div>
+
         <div>
-          <a href="#" className=" text-muted-foreground font-sans hover:text-zinc-50 hover:transition-all">
+          <Link to="/products" className={onFocus === 'Products' ?  'text-zinc-100' : 'text-muted-foreground hover:text-zinc-50 hover:transition-all'}>
             Produtos
-          </a>
+          </Link>
         </div>
       </div>
+
       <div className="py-3">
         <img src={Profile} alt="Foto de perfil" className='h-12'/>
       </div>

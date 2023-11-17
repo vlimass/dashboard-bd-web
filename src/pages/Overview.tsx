@@ -1,13 +1,13 @@
-import { Card } from "./Card";
-import { Header } from "./Header";
+import { Card } from "../components/Card";
+import { Header } from "../components/Header";
 
 // Imagens 
 import Dollar from '../assets/dollar.svg'
 import Bag from '../assets/bag.svg'
 import MoneyCard from '../assets/moneyCard.svg'
 import People from '../assets/people.svg'
-import { PurchaseAmountPerSeason } from "./PurchaseAmountPerSeason";
-import { PurchaseAmountPerLocation } from "./PurchaseAmountPerLocation";
+import { PurchaseAmountPerSeason } from "../components/PurchaseAmountPerSeason";
+import { PurchaseAmountPerLocation } from "../components/PurchaseAmountPerLocation";
 
 export function Overview() {
   const cardInfo = [
@@ -43,7 +43,7 @@ export function Overview() {
 
   return (
     <>
-      <Header />
+      <Header onFocus="Overview"/>
 
       <main className="p-12">
         <h1 className=" text-3xl font-bold mb-6">Visão geral</h1>
