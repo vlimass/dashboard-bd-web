@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Profile from '../assets/profile.svg'
+import Logo from '../assets/logo.svg'
 
 interface HeaderProps {
   onFocus: string;
@@ -8,7 +9,11 @@ interface HeaderProps {
 export function Header({ onFocus } : HeaderProps) {
   return (
     <div className="flex justify-between items-center border-b-[1px] border-zinc-700 px-12 sticky top-0">
-      <div className="flex gap-8 py-3">
+      <div className="flex items-center gap-8 py-3">
+        <div>
+          <img src={Logo} alt="Foto da logo" className='h-8'/>
+        </div>
+
         <div>
           <Link to="/" className={onFocus === 'Overview' ?  'text-zinc-100' : 'text-muted-foreground hover:text-zinc-50 hover:transition-all' }>
             Visão geral
