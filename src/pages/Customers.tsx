@@ -18,7 +18,6 @@ export function Customers() {
         <h1 className=" text-3xl font-bold mb-6">Clientes</h1>
 
         <div className="flex gap-6">
-          {/* Esquerda */}
           
           <section className="flex flex-col w-1/3 gap-6">
             {/* Gênero */}
@@ -33,7 +32,6 @@ export function Customers() {
             <FrequencyOfPurchases />
           </section>
           
-          {/* Direita */}
           <section className="flex flex-col w-2/3 gap-6">
             {/* Idade - barrinha */}
             <PurchaseAmountPerAge />

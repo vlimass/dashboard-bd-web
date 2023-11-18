@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export function Header({ onFocus } : HeaderProps) {
   return (
-    <div className="flex justify-between items-center border-b-[1px] border-zinc-700 px-12">
+    <div className="flex justify-between items-center border-b-[1px] border-zinc-700 px-12 sticky top-0">
       <div className="flex gap-8 py-3">
         <div>
           <Link to="/" className={onFocus === 'Overview' ?  'text-zinc-100' : 'text-muted-foreground hover:text-zinc-50 hover:transition-all' }>

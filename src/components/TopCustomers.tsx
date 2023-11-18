@@ -16,18 +16,6 @@ export function TopCustomers() {
       amount: 5435
     },
   ]
-  
-  // Definindo as posições dos clientes
-  let i = 0
-
-  const topCustomersWithIndex = data.map(customer => {
-    i++
-
-    return {
-      index: i, 
-      ...customer
-    }
-  })
 
   return (
     <div className="py-6 px-10 border-zinc-700 border-[1px] rounded-xl h-full">
@@ -42,10 +30,10 @@ export function TopCustomers() {
       </div>
         
       <div className='flex items-center justify-between'>
-        {topCustomersWithIndex.map(customer =>
+        {data.map((customer, index) =>
           <div className='flex flex-col items-center justify-between'>
             <div className='flex items-center gap-6'>
-              <span className="text-4xl font-light text-muted-foreground">{customer.index}.</span>
+              <span className="text-4xl font-light text-muted-foreground">{index + 1}.</span>
               <div className='flex flex-col'>
                 <span className='mb-1 text-xl'>
                   Cliente 
