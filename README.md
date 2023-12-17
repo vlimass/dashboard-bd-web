@@ -1,6 +1,6 @@
 # Front-end Dashboard BD  
 
-O **Dashboard BD** é um projeto realizado para o trabalho final da disciplina de Banco de Dados do curso de Ciência da Computação da UFRJ, feito em colaboração com Breno Rangel. O objetivo foi desenvolver um dashboard para uma loja de roupas fictícia integrado à uma API que fornece dados armazenados em um banco MySQL. A base de dados pode ser acessada em https://www.kaggle.com/datasets/iamsouravbanerjee/customer-shopping-trends-dataset.
+O **Dashboard BD** é um projeto realizado para o trabalho final da disciplina de Banco de Dados do curso de Ciência da Computação da UFRJ, feito com a colaboração de Breno Rangel. O objetivo foi desenvolver um dashboard para uma loja de roupas fictícia integrado à uma API que fornece dados armazenados em um banco MySQL. A base de dados pode ser acessada em https://www.kaggle.com/datasets/iamsouravbanerjee/customer-shopping-trends-dataset.
 
 ### 🛠 Tecnologias utilizadas
 
@@ -34,6 +34,8 @@ npm run dev
 ```
 
 Tudo pronto! Seu projeto front-end `Dashboard BD` já está rodando e você pode acessá-lo através de seu navegador em http://localhost:5173/.
+
+**IMPORTANTE**: Para ver os dados na interface do dashboard é necessário rodar a aplicação back-end simultaneamente! Saiba como rodar o back-end do projeto em https://github.com/vlimass/dashboard-bd-server.
 
 ### 📸 Preview do projeto
 
