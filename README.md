@@ -37,7 +37,7 @@ Tudo pronto! Seu projeto front-end `Dashboard BD` já está rodando e você pode
 
 ### 📸 Preview do projeto
 
-
+![](https://github.com/vlimass/dashboard-bd-web/blob/main/images/projetoBD.gif)
 
 <hr>
 <div align="center">made with 🤍 by viny</div>
