@@ -1,25 +1,11 @@
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { SalesPerSeasonProps } from "@/pages/Overview"
 
-const data = [
-  {
-    name: "Primavera",
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: "Verão",
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: "Outono",
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: "Inverno",
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-]
+interface Props {
+  data: SalesPerSeasonProps[]
+}
 
-export function PurchaseAmountPerSeason() {
+export function PurchaseAmountPerSeason({ data }: Props) {
   return (
     <div className="p-6 border-zinc-700 border-[1px] rounded-xl w-1/2">
 

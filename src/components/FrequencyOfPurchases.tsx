@@ -1,17 +1,13 @@
 import { PieChart, Pie, Cell } from 'recharts';
-
-const data = [
-  { name: 'Group A', value: Math.random() * 100 },
-  { name: 'Group B', value: Math.random() * 100 },
-  { name: 'Group C', value: Math.random() * 100 },
-  { name: 'Group D', value: Math.random() * 100 },
-  { name: 'Group E', value: Math.random() * 100 },
-  { name: 'Group F', value: Math.random() * 100 },
-];
+import { SalesFrequencyProps } from '@/pages/Customers';
 
 const COLORS = ['#170c31', '#271766', '#931dfa', '#694eb2', '#b299f3', '#ebe5f9'];
 
-export function FrequencyOfPurchases() {
+interface Props {
+  data: SalesFrequencyProps[]
+}
+
+export function FrequencyOfPurchases({ data }: Props) {
   return (
     <div className='flex items-center justify-center flex-col p-6 border-zinc-700 border-[1px] rounded-xl'>
       <span className="font-semibold mb-4 inline-block text-left mr-auto">Frequência de compras</span>

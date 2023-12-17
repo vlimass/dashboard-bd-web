@@ -1,3 +1,4 @@
+import { ProductsCategoriesProps } from '@/pages/Products';
 import { PieChart, Pie, Cell } from 'recharts';
 
 interface CustomizedLabel {
@@ -9,13 +10,6 @@ interface CustomizedLabel {
   percent: number;
   index: number;
 }
-
-const data = [
-  { name: 'Roupas', value: 400 },
-  { name: 'Acessórios', value: 300 },
-  { name: 'Calçados', value: 300 },
-  { name: 'Agasalhos', value: 200 },
-];
 
 const COLORS = ['#170c31', '#271766', '#931dfa', '#694eb2'];
 
@@ -40,7 +34,11 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-export function Categories() {
+interface Props {
+  data: ProductsCategoriesProps[]
+}
+
+export function Categories({ data }: Props) {
   return (
     <div className='flex items-center justify-center flex-col p-6 border-zinc-700 border-[1px] rounded-xl'>
       <span className="font-semibold mb-6 inline-block text-left mr-auto">Categorias de produtos</span>

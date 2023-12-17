@@ -1,6 +1,6 @@
 interface PrimaryCardProps {
   title: string;
-  value: string;
+  value: number;
   icon: string;
   iconAlt: string;
   description: string;
@@ -17,7 +17,9 @@ export function PrimaryCard({title, value, icon, description, iconAlt} : Primary
 
       <div className='flex flex-col gap-1 mt-2'>
         <span className='text-2xl font-semibold'>
-          {title === 'Venda total'? '$' : '+'}{value}
+          {title === 'Venda total'? 
+          `$${value.toFixed(2).toString().replace('.', ',')}` 
+          : `+${value}`}
         </span>
         
         <span className=' text-xs text-muted-foreground'>

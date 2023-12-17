@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { api } from "@/lib/axios";
+
+// Componentes
 import { PrimaryCard } from "../components/PrimaryCard";
 import { Header } from "../components/Header";
 
@@ -9,33 +13,91 @@ import People from '../assets/people.svg'
 import { PurchaseAmountPerSeason } from "../components/PurchaseAmountPerSeason";
 import { PurchaseAmountPerLocation } from "../components/PurchaseAmountPerLocation";
 
+export interface SalesPerSeasonProps {
+  name: string;
+  total: number;
+}
+
+export interface SalesPerLocationProps {
+  location: string;
+  amount: number;
+}
+
 export function Overview() {
+  const [totalSale, setTotalSale] = useState<number>(0)
+  const [subscriptions, setSubscriptions] = useState<number>(0)
+  const [customersNumber, setCustomersNumber] = useState<number>(0)
+  const [productsSold, setProductsSold] = useState<number>(0)
+  const [salesPerSeason, setSalesPerSeason] = useState<SalesPerSeasonProps[]>([])
+  const [salesPerLocation, setSalesPerLocation] = useState<SalesPerLocationProps[]>([])
+
+  async function getData(){
+    const totalSaleResponse = await api.get('overview/totalSale')
+    const subscriptionsResponse = await api.get('overview/subscriptions')
+    const customersNumberResponse = await api.get('/overview/customersNumber')
+    const productsSoldResponse = await api.get('/overview/productsSold')
+    const salesPerSeasonResponse = await api.get('/overview/sales/season')
+    const salesPerLocationResponse = await api.get('/overview/sales/location')
+
+    const totalSaleData = await totalSaleResponse.data
+    console.log(totalSaleData.totalSale)
+    const subscriptionsData = await subscriptionsResponse.data
+    console.log(subscriptionsData.subscriptions)
+    const customersNumberData = await customersNumberResponse.data
+    console.log(customersNumberData.customersNumber)
+    const productsSoldData = await productsSoldResponse.data
+    console.log(productsSoldData.productsSold)
+    const salesPerSeasonData = await salesPerSeasonResponse.data
+    console.log(salesPerSeasonData)
+    const salesPerLocationData = await salesPerLocationResponse.data
+    console.log(salesPerLocationData)
+
+    setTotalSale(totalSaleData.totalSale)
+    setSubscriptions(subscriptionsData.subscriptions)
+    setCustomersNumber(customersNumberData.customersNumber)
+    setProductsSold(productsSoldData.productsSold)
+    setSalesPerSeason(salesPerSeasonData)
+    setSalesPerLocation(salesPerLocationData)
+  }
+
+  useEffect(() => {
+    const handleLoad = () => {
+      getData()
+    };
+
+    window.addEventListener('load', handleLoad);
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
+  }, [])
+
   const cardInfo = [
     { 
       title: "Venda total",
-      value: 45231.89,
-      description: "+20.1% em relação ao último mês", 
+      value: totalSale,
+      description: "Em relação ao último mês", 
       image: Dollar,
       imageAlt: "Ícone cifrão"
     },
     { 
       title: "Assinaturas",
-      value: 2350,
-      description: "+180.1% em relação ao último mês", 
+      value: subscriptions,
+      description: "Em relação ao último mês", 
       image: MoneyCard,
       imageAlt: "Ícone cartão de crédito"
     },
     { 
       title: "Número de clientes",
-      value: 12234,
-      description: "+19% em relação ao último mês", 
+      value: customersNumber,
+      description: "Em relação ao último mês", 
       image: People,
       imageAlt: "Ícone pessoas"
     },
     { 
       title: "Produtos vendidos",
-      value: 573,
-      description: "+201 nas últimas 24h", 
+      value: productsSold,
+      description: "Em relação as últimas 24h", 
       image: Bag,
       imageAlt: "Ícone sacola"
     },
@@ -54,7 +116,7 @@ export function Overview() {
             <PrimaryCard 
               key={card.title}
               title={card.title} 
-              value={card.value.toFixed(2).toString().replace('.', ',')} 
+              value={card.value!} 
               description={card.description} 
               icon={card.image}
               iconAlt={card.imageAlt}
@@ -64,10 +126,10 @@ export function Overview() {
         
         <section className="mt-6 flex gap-6">
           {/* Gráfico de vendas por temporada*/}
-          <PurchaseAmountPerSeason />
+          <PurchaseAmountPerSeason data={salesPerSeason}/>
 
           {/* Tabela de vendas por localização */}
-          <PurchaseAmountPerLocation />
+          <PurchaseAmountPerLocation data={salesPerLocation} />
 
         </section>
       </main>
